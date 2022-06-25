@@ -1,5 +1,5 @@
 import csv
-import numpy
+import numpy as np
 
 
 def csv_writer(matrix):
@@ -10,7 +10,7 @@ def csv_writer(matrix):
 
 
 def data_maker(n, m):
-    vectors_array = numpy.random.uniform(-1, 1, (n, m))
+    vectors_array = np.random.uniform(-1, 1, (n, m))
     return vectors_array
 
 

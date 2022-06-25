@@ -1,4 +1,9 @@
 from file_creator import file_creator
+from data_processing import (
+    csv_reader,
+    euclidean_distance,
+    histogram
+)
 
 str_bool = True
 col_bool = True
@@ -52,6 +57,11 @@ def start():
         columns = columns_input(col_input)
 
     file_creator(strings, columns)
+    vectors = csv_reader()
+    max_dist, couple_max, min_dist, couple_min = euclidean_distance(vectors)
+    print(f'Максимальное расстояние: {max_dist}. Пары векторов {couple_max[0]}-{couple_max[1]} \n'
+          f'Минимальное расстояние: {min_dist}. Пары векторов {couple_min[0]}-{couple_min[1]}')
+    histogram(vectors, max_dist)
 
 
 if __name__ == '__main__':
