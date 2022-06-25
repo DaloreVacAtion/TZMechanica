@@ -16,7 +16,7 @@ def columns_input(user_input: str):
     try:
         user_input = int(user_input)
     except ValueError as e:
-        e.args += ('Формат введенных данных может принимать только числовые значения',)
+        e.args += ('Формат введенных данных может принимать только целочисленные значения',)
         raise
 
     if not 10 < user_input <= 50:
@@ -35,7 +35,7 @@ def strings_input(user_input: str):
     try:
         user_input = int(user_input)
     except ValueError as e:
-        e.args += ('Формат введенных данных может принимать только числовые значения',)
+        e.args += ('Формат введенных данных может принимать только целочисленные значения',)
         raise
 
     if not 500 < user_input <= 1000:
@@ -58,10 +58,10 @@ def start():
 
     file_creator(strings, columns)
     vectors = csv_reader()
-    max_dist, couple_max, min_dist, couple_min = euclidean_distance(vectors)
+    max_dist, couple_max, min_dist, couple_min , graph = euclidean_distance(vectors)
     print(f'Максимальное расстояние: {max_dist}. Пары векторов {couple_max[0]}-{couple_max[1]} \n'
           f'Минимальное расстояние: {min_dist}. Пары векторов {couple_min[0]}-{couple_min[1]}')
-    histogram(vectors, max_dist)
+    histogram(graph, max_dist)
 
 
 if __name__ == '__main__':
