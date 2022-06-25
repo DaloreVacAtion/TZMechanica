@@ -58,8 +58,8 @@ def start():
 
     file_creator(strings, columns)
     vectors = csv_reader()
-    max_dist, couple_max, min_dist, couple_min , graph = euclidean_distance(vectors)
-    print(f'Максимальное расстояние: {max_dist}. Пары векторов {couple_max[0]}-{couple_max[1]} \n'
+    max_dist, couple_max, min_dist, couple_min, graph = euclidean_distance(vectors)
+    print(f'Максимальное расстояние: {max_dist}. Пары векторов {couple_max[0]}-{couple_max[1]}\n'
           f'Минимальное расстояние: {min_dist}. Пары векторов {couple_min[0]}-{couple_min[1]}')
     histogram(graph, max_dist)
 
