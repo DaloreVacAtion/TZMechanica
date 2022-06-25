@@ -1,3 +1,5 @@
+from pyfiglet import Figlet
+
 from file_creator import file_creator
 from data_processing import (
     csv_reader,
@@ -49,20 +51,26 @@ def strings_input(user_input: str):
 
 def start():
     while str_bool:
-        str_input = input('Введите количество строк от 501 до 1000, либо слово СТОП(STOP) для остановки программы...\n')
+        str_input = input('Введите количество строк от 501 до 1000, либо слово СТОП(STOP) '
+                          'для остановки программы...\n[N]: ')
         strings = strings_input(str_input)
 
     while col_bool:
-        col_input = input('Введите количество столбцов от 11 до 50, либо слово СТОП(STOP) для остановки программы...\n')
+        col_input = input('Введите количество столбцов от 11 до 50, либо слово СТОП(STOP) '
+                          'для остановки программы...\n[M]: ')
         columns = columns_input(col_input)
 
     file_creator(strings, columns)
     vectors = csv_reader()
     max_dist, couple_max, min_dist, couple_min, graph = euclidean_distance(vectors)
-    print(f'Максимальное расстояние: {max_dist}. Пары векторов {couple_max[0]}-{couple_max[1]}\n'
-          f'Минимальное расстояние: {min_dist}. Пары векторов {couple_min[0]}-{couple_min[1]}')
+    print(f'[MAX DISTANCE]: {max_dist}. [VECTORS]: {couple_max[0]}-{couple_max[1]}\n'
+          f'[MIN DISTANCE]: {min_dist}. [VECTORS]: {couple_min[0]}-{couple_min[1]}')
     histogram(graph, max_dist)
 
 
 if __name__ == '__main__':
+    preview_text = Figlet(font='slant')
+    endpoint_text = Figlet(width=120)
+    print(preview_text.renderText('EUCLIDEAN DISTANCE'))
     start()
+    print(endpoint_text.renderText('PROGRAM  SHUTDOWN...'))
